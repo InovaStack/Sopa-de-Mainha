@@ -1,7 +1,0 @@
-{
-  "name": "Sopa de Mainha - O Tempero Arretado",
-  "description": "Uma plataforma moderna e responsiva para pedidos de sopas e caldos com o toque especial do interior, incluindo um assistente virtual movido a IA.",
-  "requestFramePermissions": [
-    "microphone"
-  ]
-}

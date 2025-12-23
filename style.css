@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Montserrat:wght@400;600;700&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fdf6e3;
+    -webkit-tap-highlight-color: transparent;
+}
+
+h1, h2, h3 {
+    font-family: 'Bree+Serif', serif;
+}
+
+.bg-pattern {
+    background-image: url('https://www.transparenttextures.com/patterns/papyros.png');
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Animations that were in Tailwind classes or index.css might need explicit definition if not fully covered by Tailwind CDN plugins */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+.animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+}
