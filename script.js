@@ -84,7 +84,6 @@ const WEEKLY_MENU = [
     { day: 'Quinta', soups: [getSoup('sopa_carne'), getSoup('alho_poro'), getSoup('caldo_macaxeira')] },
     { day: 'Sexta', soups: [getSoup('sopa_carne'), getSoup('mocoto'), getSoup('caldo_macaxeira')] }, // "Secta" -> Sexta
     { day: 'Sábado', soups: [getSoup('sopa_carne'), getSoup('camarao'), getSoup('caldo_macaxeira')] },
-    { day: 'Domingo', soups: [getSoup('sopa_carne'), getSoup('camarao'), getSoup('caldo_macaxeira')] }, // Assuming same as Sat
 ].filter(d => d.soups.every(s => s)); // Filter out any nulls if typos
 
 // 3. COMIDAS DA CASA (DIÁRIAS)
@@ -138,12 +137,19 @@ const DESSERTS = [
     { id: 'pudim', name: 'Pudim', price: 8.00, image: '🍮' },
 ];
 
-const DAYS = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+const DAYS = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
 const CATEGORIES = ['todos', 'sopa', 'caldo', 'creme'];
 
 // --- State ---
+// If Sunday (0), show Monday (Segunda). Otherwise use standard mapping but shifted because DAYS array changed.
+// Actually, simpler logic: Get current day name, if not in list, default to first day.
+const weekDayNames = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+const todayName = weekDayNames[new Date().getDay()];
+const initialDay = DAYS.includes(todayName) ? todayName : 'Segunda';
+
 let state = {
-    selectedDay: DAYS[new Date().getDay()],
+    selectedDay: initialDay,
+
     activeCategory: 'todos',
     cart: [],
     selectedItem: null, // Unified item selection
