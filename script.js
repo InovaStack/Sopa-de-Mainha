@@ -172,7 +172,7 @@ function renderMenu() {
                             <h3 class="text-sm md:text-xl font-bold text-[#6b3e26] leading-tight truncate pr-2">${soup.name}</h3>
                             <div class="flex text-yellow-400 text-[8px] md:text-sm flex-shrink-0">${stars}</div>
                         </div>
-                        <p class="text-stone-400 text-[9px] md:text-sm line-clamp-2 leading-tight md:leading-relaxed mb-2 md:mb-6">
+                        <p class="text-stone-600 font-medium text-[10px] md:text-sm line-clamp-2 leading-tight md:leading-relaxed mb-2 md:mb-6">
                             ${soup.description}
                         </p>
                     </div>
@@ -254,7 +254,7 @@ window.openDetails = (soupId) => {
                 <p class="text-xl md:text-3xl font-black text-green-700 whitespace-nowrap ml-2">R$ ${soup.price.toFixed(2)}</p>
             </div>
             
-            <p class="text-stone-500 text-xs md:text-base mb-4 md:mb-6 leading-relaxed">${soup.description}</p>
+            <p class="text-stone-700 font-medium text-sm md:text-lg mb-4 md:mb-6 leading-relaxed">${soup.description}</p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-6 md:mb-8">
                 <div>
