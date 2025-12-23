@@ -4,7 +4,7 @@ import { Soup, CartItem, DayOfWeek, CustomerInfo } from './types';
 import { WEEKLY_MENU, STORE_PHONE } from './constants';
 import Header from './components/Header';
 import SoupCard from './components/SoupCard';
-import MainhaAI from './components/MainhaAI';
+
 
 const App: React.FC = () => {
   const [selectedDay, setSelectedDay] = useState<DayOfWeek>('Segunda');
@@ -14,9 +14,9 @@ const App: React.FC = () => {
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string>('todos');
   const [isCartAnimating, setIsCartAnimating] = useState(false);
-  
+
   const [userRatings, setUserRatings] = useState<Record<string, number>>({});
-  
+
   const [customerInfo, setCustomerInfo] = useState<CustomerInfo>({
     name: '',
     address: '',
@@ -128,11 +128,10 @@ _Pedido feito pelo aplicativo Sopa de Mainha_`;
                     setSelectedDay(m.day);
                     setActiveCategory('todos');
                   }}
-                  className={`px-4 py-2 md:px-6 md:py-3 rounded-full text-[10px] md:text-sm font-bold transition-all flex-shrink-0 snap-center border ${
-                    selectedDay === m.day 
-                    ? 'bg-[#d2691e] text-white border-[#d2691e] shadow-lg shadow-orange-200' 
+                  className={`px-4 py-2 md:px-6 md:py-3 rounded-full text-[10px] md:text-sm font-bold transition-all flex-shrink-0 snap-center border ${selectedDay === m.day
+                    ? 'bg-[#d2691e] text-white border-[#d2691e] shadow-lg shadow-orange-200'
                     : 'bg-stone-50 text-stone-400 border-transparent hover:border-stone-300'
-                  }`}
+                    }`}
                 >
                   {m.day}
                 </button>
@@ -147,11 +146,10 @@ _Pedido feito pelo aplicativo Sopa de Mainha_`;
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-1.5 md:px-5 md:py-2 rounded-lg md:rounded-xl text-[9px] md:text-xs font-bold uppercase tracking-widest transition-all border ${
-                  activeCategory === cat 
-                  ? 'bg-[#6b3e26] text-white border-[#6b3e26]' 
+                className={`px-4 py-1.5 md:px-5 md:py-2 rounded-lg md:rounded-xl text-[9px] md:text-xs font-bold uppercase tracking-widest transition-all border ${activeCategory === cat
+                  ? 'bg-[#6b3e26] text-white border-[#6b3e26]'
                   : 'bg-stone-50 text-stone-400 border-transparent hover:bg-stone-100'
-                }`}
+                  }`}
               >
                 {cat}
               </button>
@@ -160,10 +158,10 @@ _Pedido feito pelo aplicativo Sopa de Mainha_`;
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
             {currentMenu.map(soup => (
-              <SoupCard 
-                key={soup.id} 
-                soup={soup} 
-                onAddToCart={addToCart} 
+              <SoupCard
+                key={soup.id}
+                soup={soup}
+                onAddToCart={addToCart}
                 onViewDetails={setSelectedSoup}
               />
             ))}
@@ -177,7 +175,7 @@ _Pedido feito pelo aplicativo Sopa de Mainha_`;
           <div className="bg-white rounded-t-2xl md:rounded-3xl w-full max-w-xl max-h-[90vh] overflow-y-auto shadow-2xl animate-in slide-in-from-bottom duration-300 no-scrollbar">
             <div className="relative h-48 md:h-80">
               <img src={selectedSoup.image} alt={selectedSoup.name} className="w-full h-full object-cover" />
-              <button 
+              <button
                 onClick={() => setSelectedSoup(null)}
                 className="absolute top-4 right-4 bg-black/40 text-white w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-bold hover:bg-black/60 transition-colors"
               >✕</button>
@@ -199,9 +197,9 @@ _Pedido feito pelo aplicativo Sopa de Mainha_`;
                 </div>
                 <p className="text-xl md:text-3xl font-black text-green-700 whitespace-nowrap ml-2">R$ {selectedSoup.price.toFixed(2)}</p>
               </div>
-              
+
               <p className="text-stone-500 text-xs md:text-base mb-4 md:mb-6 leading-relaxed">{selectedSoup.description}</p>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-6 md:mb-8">
                 <div>
                   <h4 className="font-bold text-[#6b3e26] mb-2 md:mb-3 text-[10px] md:text-xs uppercase tracking-[0.2em] border-l-4 border-[#d2691e] pl-2 md:pl-3">Ingredientes:</h4>
@@ -213,7 +211,7 @@ _Pedido feito pelo aplicativo Sopa de Mainha_`;
                     ))}
                   </div>
                 </div>
-                
+
                 <div className="bg-stone-50 p-3 md:p-4 rounded-xl md:rounded-2xl border border-stone-100">
                   <h4 className="font-bold text-[#6b3e26] mb-2 text-[10px] md:text-xs uppercase tracking-[0.2em] text-center">O que achou?</h4>
                   <div className="flex justify-center gap-2 text-2xl md:text-3xl">
@@ -229,8 +227,8 @@ _Pedido feito pelo aplicativo Sopa de Mainha_`;
                   </div>
                 </div>
               </div>
-              
-              <button 
+
+              <button
                 onClick={() => { addToCart(selectedSoup); setSelectedSoup(null); }}
                 className="w-full bg-[#d2691e] hover:bg-[#a0522d] text-white font-bold py-4 md:py-5 rounded-xl md:rounded-2xl transition-all shadow-xl shadow-orange-100 flex items-center justify-center gap-3 text-base md:text-lg transform active:scale-[0.98]"
               >
@@ -249,25 +247,25 @@ _Pedido feito pelo aplicativo Sopa de Mainha_`;
               <h2 className="text-xl md:text-2xl font-bold italic">Quase lá! 🌵</h2>
               <p className="text-[9px] md:text-xs opacity-80 uppercase tracking-widest mt-1">Informe onde entregamos</p>
             </div>
-            
+
             <form onSubmit={sendToWhatsApp} className="p-4 md:p-8 space-y-3 md:space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                 <div>
                   <label className="block text-[10px] md:text-xs font-bold text-[#6b3e26] uppercase tracking-wider mb-1">Seu Nome</label>
-                  <input 
+                  <input
                     required
-                    type="text" 
+                    type="text"
                     value={customerInfo.name}
-                    onChange={(e) => setCustomerInfo({...customerInfo, name: e.target.value})}
+                    onChange={(e) => setCustomerInfo({ ...customerInfo, name: e.target.value })}
                     className="w-full bg-white border border-stone-200 rounded-lg md:rounded-xl px-3 py-2 md:px-4 md:py-3 text-sm text-stone-800 focus:ring-2 focus:ring-[#d2691e] focus:outline-none"
                     placeholder="Seu nome"
                   />
                 </div>
                 <div>
                   <label className="block text-[10px] md:text-xs font-bold text-[#6b3e26] uppercase tracking-wider mb-1">Pagamento</label>
-                  <select 
+                  <select
                     value={customerInfo.paymentMethod}
-                    onChange={(e) => setCustomerInfo({...customerInfo, paymentMethod: e.target.value})}
+                    onChange={(e) => setCustomerInfo({ ...customerInfo, paymentMethod: e.target.value })}
                     className="w-full bg-white border border-stone-200 rounded-lg md:rounded-xl px-3 py-2 md:px-4 md:py-3 text-sm text-stone-800 focus:ring-2 focus:ring-[#d2691e] focus:outline-none appearance-none"
                   >
                     <option>Pix</option>
@@ -284,7 +282,7 @@ _Pedido feito pelo aplicativo Sopa de Mainha_`;
                   <label className="block text-[10px] font-bold text-[#6b3e26] uppercase tracking-wider mb-0.5">Tempo Estimado</label>
                   <select
                     value={customerInfo.deliveryTime}
-                    onChange={(e) => setCustomerInfo({...customerInfo, deliveryTime: e.target.value})}
+                    onChange={(e) => setCustomerInfo({ ...customerInfo, deliveryTime: e.target.value })}
                     className="w-full bg-transparent font-bold text-[#d2691e] text-sm focus:outline-none appearance-none cursor-pointer"
                   >
                     <option>O mais rápido possível (30-50 min)</option>
@@ -294,37 +292,37 @@ _Pedido feito pelo aplicativo Sopa de Mainha_`;
                   </select>
                 </div>
               </div>
-              
+
               <div>
                 <label className="block text-[10px] md:text-xs font-bold text-[#6b3e26] uppercase tracking-wider mb-1">Endereço Completo</label>
-                <input 
+                <input
                   required
-                  type="text" 
+                  type="text"
                   value={customerInfo.address}
-                  onChange={(e) => setCustomerInfo({...customerInfo, address: e.target.value})}
+                  onChange={(e) => setCustomerInfo({ ...customerInfo, address: e.target.value })}
                   className="w-full bg-white border border-stone-200 rounded-lg md:rounded-xl px-3 py-2 md:px-4 md:py-3 text-sm text-stone-800 focus:ring-2 focus:ring-[#d2691e] focus:outline-none"
                   placeholder="Rua, número"
                 />
               </div>
-              
+
               <div className="grid grid-cols-2 gap-3 md:gap-4">
                 <div>
                   <label className="block text-[10px] md:text-xs font-bold text-[#6b3e26] uppercase tracking-wider mb-1">Bairro</label>
-                  <input 
+                  <input
                     required
-                    type="text" 
+                    type="text"
                     value={customerInfo.neighborhood}
-                    onChange={(e) => setCustomerInfo({...customerInfo, neighborhood: e.target.value})}
+                    onChange={(e) => setCustomerInfo({ ...customerInfo, neighborhood: e.target.value })}
                     className="w-full bg-white border border-stone-200 rounded-lg md:rounded-xl px-3 py-2 md:px-4 md:py-3 text-sm text-stone-800 focus:ring-2 focus:ring-[#d2691e] focus:outline-none"
                     placeholder="Bairro"
                   />
                 </div>
                 <div>
                   <label className="block text-[10px] md:text-xs font-bold text-[#6b3e26] uppercase tracking-wider mb-1">Referência</label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     value={customerInfo.reference}
-                    onChange={(e) => setCustomerInfo({...customerInfo, reference: e.target.value})}
+                    onChange={(e) => setCustomerInfo({ ...customerInfo, reference: e.target.value })}
                     className="w-full bg-white border border-stone-200 rounded-lg md:rounded-xl px-3 py-2 md:px-4 md:py-3 text-sm text-stone-800 focus:ring-2 focus:ring-[#d2691e] focus:outline-none"
                     placeholder="Ex: Perto do bar"
                   />
@@ -332,14 +330,14 @@ _Pedido feito pelo aplicativo Sopa de Mainha_`;
               </div>
 
               <div className="pt-3 md:pt-4 flex gap-2 md:gap-3">
-                <button 
+                <button
                   type="button"
                   onClick={() => setIsCheckoutOpen(false)}
                   className="flex-1 bg-stone-200 text-stone-600 font-bold py-3 md:py-4 rounded-xl md:rounded-2xl hover:bg-stone-300 transition-colors text-sm"
                 >
                   Voltar
                 </button>
-                <button 
+                <button
                   type="submit"
                   className="flex-[2] bg-green-600 hover:bg-green-700 text-white font-bold py-3 md:py-4 rounded-xl md:rounded-2xl shadow-lg flex items-center justify-center gap-2 transition-transform active:scale-95 text-sm"
                 >
@@ -353,7 +351,7 @@ _Pedido feito pelo aplicativo Sopa de Mainha_`;
 
       {/* Botão de Pedido */}
       {cartCount > 0 && (
-        <button 
+        <button
           onClick={() => setIsCartOpen(true)}
           className={`fixed bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:right-8 md:translate-x-0 z-[90] bg-green-600 text-white px-8 py-4 md:px-10 md:py-5 rounded-full shadow-2xl flex items-center gap-3 md:gap-4 font-bold border-4 border-white transition-all hover:scale-105 ${isCartAnimating ? 'animate-bounce scale-110 bg-green-500' : 'animate-in zoom-in-50 duration-300'}`}
         >
@@ -373,7 +371,7 @@ _Pedido feito pelo aplicativo Sopa de Mainha_`;
             </div>
             <button onClick={() => setIsCartOpen(false)} className="text-2xl md:text-3xl hover:rotate-90 transition-transform p-2">✕</button>
           </div>
-          
+
           <div className="flex-grow overflow-y-auto p-4 md:p-6 bg-stone-50 space-y-3 md:space-y-4">
             {cart.length === 0 ? (
               <div className="flex flex-col items-center justify-center h-full text-stone-300">
@@ -400,14 +398,14 @@ _Pedido feito pelo aplicativo Sopa de Mainha_`;
               ))
             )}
           </div>
-          
+
           {cart.length > 0 && (
             <div className="p-5 md:p-8 bg-white border-t border-stone-100">
               <div className="flex justify-between items-center mb-4 md:mb-6">
                 <span className="font-bold text-stone-400 text-sm md:text-lg uppercase tracking-widest">Total</span>
                 <span className="text-2xl md:text-3xl font-black text-[#6b3e26]">R$ {cartTotal.toFixed(2).replace('.', ',')}</span>
               </div>
-              <button 
+              <button
                 onClick={handleFinalizeOrder}
                 className="w-full bg-green-600 hover:bg-green-700 text-white py-4 md:py-5 rounded-xl md:rounded-2xl font-bold shadow-xl transition-all text-lg md:text-xl flex items-center justify-center gap-2"
               >
@@ -419,8 +417,7 @@ _Pedido feito pelo aplicativo Sopa de Mainha_`;
         </div>
       </div>
 
-      <MainhaAI availableSoups={currentMenu} />
-      
+
       <footer className="mt-8 md:mt-12 mb-20 md:mb-0 text-center text-stone-400 text-[9px] md:text-xs uppercase tracking-[0.4em]">
         © 2024 Sopa de Mainha • Feito no Sertão
       </footer>
